@@ -21,6 +21,7 @@ if (result.error) {
 console.log('Environment variables loaded:');
 console.log('- PORT:', process.env.PORT);
 console.log('- NODE_ENV:', process.env.NODE_ENV);
+console.log('- MONGODB_URL:', process.env.MONGODB_URL ? 'Set' : 'Not set');
 console.log('- MONGODB_URI:', process.env.MONGODB_URI ? 'Set' : 'Not set');
 console.log('- JWT_SECRET:', process.env.JWT_SECRET ? 'Set' : 'Not set');
 
