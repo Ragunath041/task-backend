@@ -35,10 +35,11 @@ const port = process.env.PORT || 5000;
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    if (!process.env.MONGODB_URI) {
-      throw new Error('MONGODB_URI environment variable is not set');
+    // Railway provides the connection string in MONGODB_URL
+    const mongoURI = process.env.MONGODB_URL || process.env.MONGODB_URI;
+    if (!mongoURI) {
+      throw new Error('MongoDB connection string not found. Set MONGODB_URL environment variable');
     }
-    const mongoURI = process.env.MONGODB_URI;
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB');
   } catch (err) {
