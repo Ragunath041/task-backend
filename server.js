@@ -35,7 +35,10 @@ const port = process.env.PORT || 5000;
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/taskmanagement';
+    if (!process.env.MONGODB_URI) {
+      throw new Error('MONGODB_URI environment variable is not set');
+    }
+    const mongoURI = process.env.MONGODB_URI;
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB');
   } catch (err) {
